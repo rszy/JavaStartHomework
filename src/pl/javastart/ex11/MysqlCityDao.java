@@ -94,7 +94,7 @@ public class MysqlCityDao implements CityDao {
 
     @Override
     public void addCity(City city) {
-        final String query = "INSERT INTO city(Name, CountryCode, District, Population) " + "values(?, ?, ?, ?)";
+        final String query = "INSERT INTO city(Name, CountryCode, District, Population) values(?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, city.getName());
