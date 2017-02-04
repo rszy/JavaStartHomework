@@ -24,7 +24,7 @@ public class EmployeeDao {
     }
 
     public void addEmployee(String[] strings) {
-        final String query = "INSERT INTO pracownicy(imie, nazwisko, wiek, pensja, stanowisko) values(?, ?, ?, ?, ?)";
+        final String query = "INSERT INTO dane_pracownikow(imie, nazwisko, wiek, pensja, stanowisko) values(?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, strings[0]);
@@ -35,6 +35,7 @@ public class EmployeeDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Nie dodano do bazy żadnego pracownika.");
+            e.printStackTrace();
         }
     }
 }
