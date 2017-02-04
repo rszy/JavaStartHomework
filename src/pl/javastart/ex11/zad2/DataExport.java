@@ -24,7 +24,9 @@ public class DataExport {
             bufferedReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("Nie znaleziono pliku.");
+            e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("Nie odczytano pliku");
             e.printStackTrace();
         }
     }

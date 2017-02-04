@@ -1,6 +1,8 @@
 package pl.javastart.ex11.zad2;
 
 import java.sql.*;
+import java.util.AbstractList;
+import java.util.ArrayList;
 
 /**
  * Created by Rysiek on 2017-02-04.
@@ -37,5 +39,27 @@ public class EmployeeDao {
             System.out.println("Nie dodano do bazy żadnego pracownika.");
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String[]> getAll() {
+        ArrayList<String[]> arrayList = new ArrayList<>();
+        try {
+        Statement statement = connection.createStatement();
+        String query = "SELECT id, imie, nazwisko, wiek, pensja, stanowisko FROM dane_pracownikow";
+        ResultSet resultSet = statement.executeQuery(query);
+        while(resultSet.next()) {
+            String[] strings = new String[6];
+            strings[0] = String.valueOf(resultSet.getInt(1));
+            strings[1] = resultSet.getString(2);
+            strings[2] = resultSet.getString(3);
+            strings[3] = String.valueOf(resultSet.getInt(4));
+            strings[4] = String.valueOf(resultSet.getString(5));
+            strings[5] = resultSet.getString(6);
+            arrayList.add(strings);
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
     }
 }
